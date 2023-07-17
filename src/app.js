@@ -1,13 +1,15 @@
 import cors from 'cors';
-import express, { json } from "express"
+import express from "express"
 import globalErrorHandler from './errorHandler/globalErrorHandler.js';
+import route from './routes/index.js';
+import config from './config/index.js'
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(config.api_route, route);
 app.get('/', (req, res) => {
-    throw new Error('hello')
     res.status(200).json('server is running');
   });
   app.use((req, res, next) => {

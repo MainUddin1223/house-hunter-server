@@ -6,12 +6,7 @@ const globalErrorHandler = (error, req, res, next) => {
   let errorMessages = [];
   console.log('--------------error---------------', error);
 
-  if (error && error.name === 'ValidationError') {
-    const simplifiedError = handleValidationError(error);
-    statusCode = simplifiedError.statusCode;
-    message = simplifiedError.message;
-    errorMessages = simplifiedError.errorMessages;
-  } else if (error instanceof ApiError) {
+if (error instanceof ApiError) {
     statusCode = error.statusCode;
     message = error.message;
     errorMessages = error.message
