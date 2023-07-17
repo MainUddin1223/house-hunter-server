@@ -44,4 +44,18 @@ const loginUser=catchAsync(
         }
     }
 )
-export const authController ={registerUser,loginUser}
+
+const auth = catchAsync(
+    async(req,res)=>{
+     const isUserExist = await User.findById({_id:req.user._id}).select('-password');
+     const {fullName,email,_id,role,phoneNumber} = isUserExist
+     if(isUserExist){
+        res.status(200).json({result:{fullName,email,_id,role,phoneNumber}})
+     }
+     else{
+        throw new ApiError(404,"User not found")
+     }
+    }
+)
+
+export const authController ={registerUser,loginUser,auth}

@@ -24,6 +24,9 @@ const userSchema = new Schema({
         type:String,
         required:true
     }
+},
+{
+    timestamps:true
 })
 userSchema.methods.isUserExist = async function (
     email
