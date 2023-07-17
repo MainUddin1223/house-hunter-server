@@ -22,4 +22,26 @@ const registerUser=catchAsync(
         }
     }
 )
-export const authController ={registerUser}
+const loginUser=catchAsync(
+    async(req,res)=>{
+        const payload = req.body;
+        const user = new User();
+        const isUserExist = await user.isUserExist(payload.email)
+        if(!isUserExist){
+            throw new ApiError(404,'User dose not exist')
+        }
+        const isPasswordMatched = await user.isPasswordMatched(
+            payload.password,
+            isUserExist.password
+          );
+          if(!isPasswordMatched){
+            throw new ApiError(401,'Unauthorized')
+        }else{
+        const {fullName,email,_id,role,phoneNumber} = isUserExist
+        const jwtPayload = {_id,role}
+        const accessToken = jwtHelpers.createJwtToken(jwtPayload,config.jwt_access_secret,config.jwt_access_expires_in)
+        res.status(200).json({result:{fullName,email,_id,role,phoneNumber} ,accessToken})
+        }
+    }
+)
+export const authController ={registerUser,loginUser}

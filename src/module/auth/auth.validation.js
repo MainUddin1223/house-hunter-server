@@ -76,4 +76,4 @@ const registerApiValidator = async (
   };
   
 
-export {registerApiValidator}
+export {registerApiValidator,loginApiValidator}

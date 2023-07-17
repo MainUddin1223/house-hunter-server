@@ -25,11 +25,20 @@ const userSchema = new Schema({
         required:true
     }
 })
+userSchema.methods.isUserExist = async function (
+    email
+  ) {
+    const userData = await User.findOne(
+      { email },
+      { _id: 1,email:1,phoneNumber:1, password: 1, role: 1, name: 1 }
+    );
+    return userData;
+  };
 userSchema.methods.isPasswordMatched = async function (
     password,
     savedPassword,
   ) {
-    const isPasswordMatched = await bcrypt.compare(password, savedPassword);
+    const isPasswordMatched =await bcrypt.compare( password,savedPassword);
     return isPasswordMatched;
   };
 
