@@ -11,6 +11,10 @@ const houseSchema = new Schema({
         type:Schema.Types.ObjectId,
         ref:'user'
     },
+    renter:{
+        type:Schema.Types.ObjectId,
+        ref:'bookedHistory'
+    },
     address:{
         type:String,
         required:true

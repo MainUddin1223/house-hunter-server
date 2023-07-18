@@ -2,6 +2,7 @@ import express from 'express';
 import config from '../config/index.js';
 import authRouter from '../module/auth/auth.route.js';
 import ownerRouter from '../module/owner/owner.route.js';
+import renterRouter from '../module/renter/renter.route.js';
 const router = express.Router();
 const defaultRoutes = [
   {
@@ -12,18 +13,10 @@ const defaultRoutes = [
     path: '/owner',
     route: ownerRouter.ownerRouter
   },
-//   {
-//     path: '/cows',
-//     route: cowRouter.cowRouter,
-//   },
-//   {
-//     path: '/orders',
-//     route: orderHistoryRouter.orderHistoryRouter,
-//   },
-//   {
-//     path: '/admins',
-//     route: adminRouter.adminRouter,
-//   },
+  {
+    path: '/renter',
+    route: renterRouter.renterRouter,
+  },
 ];
 defaultRoutes.forEach(route => {
   const apis = route.route.stack.map(path => {
