@@ -28,12 +28,12 @@ const registerValidationSchema = Joi.object({
         'string.max': 'Password cannot exceed {#limit} characters',
         'any.required': 'Password is required',
       }),
-    phoneNumber:Joi.string()
-      .required()
-      .messages({
-          'string.pattern.base': 'Please enter a valid phone number',
-          'any.required': 'Phone number is required',
-      })
+      phoneNumber: Joi.string()
+        .optional()
+        .pattern(/^(\+88)[0-9]{11}$/)
+        .messages({
+          'string.pattern.base': 'The phone number must be 14 digits and start with +880.'
+        })
 })
 
 const loginValidatonSchema=Joi.object({
