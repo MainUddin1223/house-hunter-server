@@ -34,3 +34,4 @@ process.on('uncoughtException', err => {
   }
   
   connectDB();
+  export default app;

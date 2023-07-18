@@ -5,7 +5,9 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "start": "node dist/server.js",
+    "build": "babel src -d dist"
   },
   "author": "MD Main Uddin",
   "license": "ISC",
@@ -18,5 +20,9 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.4",
     "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/preset-env": "^7.22.9"
   }
 }

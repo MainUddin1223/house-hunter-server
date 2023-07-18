@@ -1,16 +1,17 @@
 import express from 'express';
 import config from '../config/index.js';
 import authRouter from '../module/auth/auth.route.js';
+import ownerRouter from '../module/owner/owner.route.js';
 const router = express.Router();
 const defaultRoutes = [
   {
     path: '/auth',
     route: authRouter.authRouter,
   },
-//   {
-//     path: '/users',
-//     route: userRouter.userRouter,
-//   },
+  {
+    path: '/owner',
+    route: ownerRouter.ownerRouter
+  },
 //   {
 //     path: '/cows',
 //     route: cowRouter.cowRouter,
