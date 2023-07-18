@@ -8,9 +8,9 @@ router
 .post(registerApiValidator,authController.registerUser)
 router
 .route('/login')
-.post(verifyAuth,loginApiValidator,authController.loginUser)
+.post(loginApiValidator,authController.loginUser)
 router
 .route('')
-.get(authController.auth)
+.get(verifyAuth,authController.auth)
 
 export default { authRouter: router };

@@ -22,7 +22,7 @@ const registerUser=catchAsync(
         }
     }
 )
-const loginUser=catchAsync(
+const loginUser = catchAsync(
     async(req,res)=>{
         const payload = req.body;
         const user = new User();
@@ -58,4 +58,4 @@ const auth = catchAsync(
     }
 )
 
-export const authController ={registerUser,loginUser,auth}
+export const authController = {registerUser,loginUser,auth}
