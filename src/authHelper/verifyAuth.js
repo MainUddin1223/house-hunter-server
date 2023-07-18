@@ -27,12 +27,11 @@ const verifyAuth = async (req,res,next) => {
 const verifyAuthWithRole = (allowedRoles) => {
   return async (req, res, next) => {
     const token = req.headers.authorization;
-    const accessToken = token.split(' ')[1]
-    if (!accessToken) {
+    if (!token) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
-
     try {
+      const accessToken = token.split(' ')[1]
       const decoded = jwtHelpers.verifyToken(
         accessToken,
         config.jwt_access_secret
