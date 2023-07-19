@@ -17,13 +17,17 @@ const bookedHistorySchema = new Schema({
     email:{
         type:String,
         required:true
+    },
+    phoneNumber:{
+        type:String,
+        required:true
     }
 })
 
 bookedHistorySchema.pre('save', async function (next) {
 
     const count = await Booked.countDocuments({ renter:this.renter });
-    if (count>2) {
+    if (count>=2) {
       throw new ApiError(
         429,
         'You can not add more than two houses'
