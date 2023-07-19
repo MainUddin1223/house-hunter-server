@@ -15,6 +15,10 @@ const houseSchema = new Schema({
         type:Schema.Types.ObjectId,
         ref:'bookedHistory'
     },
+    availableFrom:{
+        type:String,
+        required:true
+    },
     address:{
         type:String,
         required:true

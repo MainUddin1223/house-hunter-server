@@ -37,6 +37,10 @@ const listHouseValidationSchema = Joi.object({
         'any.required': 'The description is required.',
         'string.empty': 'The description field cannot be empty.'
       }),
+      availableFrom: Joi.string().required().messages({
+        'any.required': 'The available from is required.',
+        'string.empty': 'The the available from field cannot be empty.'
+      }),
       phoneNumber: Joi.string()
       .required()
       .pattern(/^(\+88)[0-9]{11}$/)
