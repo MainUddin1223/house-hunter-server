@@ -31,5 +31,10 @@ const deleteHouse = catchAsync(async (req, res) => {
    await House.findOneAndDelete({_id:id,owner:req.user._id})
     res.status(200).json({message:"House deleted successfully",status:true});
   });
+const getHouseById = catchAsync(async (req, res) => {
+    const {id} = req.params
+   const result = await House.findOne({_id:id,owner:req.user._id})
+    res.status(200).json(result);
+  });
 
-  export const ownerController = {listAHouse, getHouseList, updateHouse, deleteHouse}
+  export const ownerController = {listAHouse, getHouseList, updateHouse, deleteHouse,getHouseById}
