@@ -1,4 +1,5 @@
 import {Schema,model} from 'mongoose';
+import ApiError from '../../errorHandler/apiErrorHandler.js';
 
 const bookedHistorySchema = new Schema({
     name:{
@@ -9,9 +10,9 @@ const bookedHistorySchema = new Schema({
         type:Schema.Types.ObjectId,
         required:true
     },
-    email:{
-        type:String,
-        required:true
+    house:{
+      type:Schema.Types.ObjectId,
+      required:true
     },
     email:{
         type:String,
@@ -20,7 +21,8 @@ const bookedHistorySchema = new Schema({
 })
 
 bookedHistorySchema.pre('save', async function (next) {
-    const count = await Booked.countDocuments({ renter:this._id });
+
+    const count = await Booked.countDocuments({ renter:this.renter });
     if (count>2) {
       throw new ApiError(
         429,
