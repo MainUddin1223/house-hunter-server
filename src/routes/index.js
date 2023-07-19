@@ -3,6 +3,7 @@ import config from '../config/index.js';
 import authRouter from '../module/auth/auth.route.js';
 import ownerRouter from '../module/owner/owner.route.js';
 import renterRouter from '../module/renter/renter.route.js';
+import houseRouter from '../module/house/house.route.js';
 const router = express.Router();
 const defaultRoutes = [
   {
@@ -16,6 +17,10 @@ const defaultRoutes = [
   {
     path: '/renter',
     route: renterRouter.renterRouter,
+  },
+  {
+    path: '/house',
+    route: houseRouter.houseRouter,
   },
 ];
 defaultRoutes.forEach(route => {
