@@ -55,47 +55,10 @@ const bookHouse = catchAsync(async (req, res) => {
   });
 
   const getBookedHouse = catchAsync(async (req, res) => {
-    const result = await Booked.find({renter:req.user._id})
+    const result = await Booked.find({renter:req.user._id}).populate('house')
     res.status(200).json(result);
   });
 
-//   const deleteBooking = catchAsync(async (req, res) => {
-//     const id = req.params.id
-//     const isBookingExist = await Booked.findById({_id:id});
-//     if(!isBookingExist){
-//         throw new ApiError(404,'Booking not found')
-//     }
-//     const session = await mongoose.startSession();
-//     session.startTransaction();
-//     try {
-//         // Delete history
-//   const res = await Booked.findOneAndDelete( [{_id:id,renter:req.user._id}],
-//             { session });
-//         // find and update house data
-//          const updateHouse = await House.findOneAndUpdate(
-//             {_id:isBookingExist.house},
-//             {isBooked:true},
-//             { $unset: { renter: 1 } },
-//             {  
-//                 session,
-//                 new: true,
-//             }
-//         )
-//         if(!updateHouse){
-//             throw new Error('Something went wrong')
-//         }
-
-//         await session.commitTransaction();
-//         session.endSession();
-//         res.status(200).json({message:"House removed successfully",status:true});
-        
-//     } catch (error) {
-//         await session.abortTransaction();
-//         session.endSession();
-//         const errorMessage = (error).message;
-//         throw new ApiError(500, errorMessage);
-//     }
-//   });
 
 const deleteBooking = catchAsync(async (req, res) => {
     const id = req.params.id;

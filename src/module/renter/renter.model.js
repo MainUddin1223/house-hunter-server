@@ -8,11 +8,11 @@ const bookedHistorySchema = new Schema({
     },
     renter:{
         type:Schema.Types.ObjectId,
-        required:true
+        ref: 'user',
     },
     house:{
       type:Schema.Types.ObjectId,
-      required:true
+      ref: 'house',
     },
     email:{
         type:String,

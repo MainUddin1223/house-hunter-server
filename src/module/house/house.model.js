@@ -60,16 +60,6 @@ const houseSchema = new Schema({
 },{
     timestamps:true
 });
-// houseSchema.pre('save', async function (next) {
-//     const user = await User.findOne({ _id: this._id });
-//     if (user && user.role !== 'owner') {
-//       throw new ApiError(
-//         409,
-//         'Renter can not list a house'
-//       );
-//     }
-//     next();
-//   });
   const House = model('house',houseSchema)
   export default House
 
