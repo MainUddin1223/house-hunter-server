@@ -4,7 +4,7 @@ import { listHouseValidator } from './house.validaton.js';
 import { verifyOwner } from '../../authHelper/verifyAuth.js';
 const router = express.Router();
 router
-.route('/list-house')
+.route('/houses')
 .post(verifyOwner,listHouseValidator,houseController.listAHouse)
 
 export default { houseRouter: router };

@@ -29,9 +29,13 @@ const listHouseValidationSchema = Joi.object({
         'any.required': 'The picture is required.',
         'string.empty': 'The picture field cannot be empty.'
       }),
+      availableFrom: Joi.string().required().messages({
+        'any.required': 'The picture is required.',
+        'string.empty': 'The picture field cannot be empty.'
+      }),
       rent: Joi.number().required().messages({
-        'any.required': 'The rent amount is required.',
-        'number.base': 'The rent amount must be a valid number.'
+        'any.required': 'The available from is required.',
+        'number.base': 'The available form be a valid number.'
       }),
       description: Joi.string().required().messages({
         'any.required': 'The description is required.',
@@ -84,6 +88,9 @@ const updateHouseValidationSchema = Joi.object({
     }),
     description: Joi.string().optional().allow('').messages({
       'string.base': 'The description must be a string.'
+    }),
+    availableFrom: Joi.string().optional().allow('').messages({
+      'string.base': 'The available from must be a string.'
     }),
     phoneNumber: Joi.string()
       .optional()

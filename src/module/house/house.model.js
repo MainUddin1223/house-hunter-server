@@ -1,6 +1,4 @@
-import config from '../../config/index.js';
 import { Schema, model } from 'mongoose';
-import User from '../auth/auth.model.js';
 
 const houseSchema = new Schema({
     name:{

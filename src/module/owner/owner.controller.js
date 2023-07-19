@@ -1,5 +1,5 @@
 import catchAsync from "../../errorHandler/catchAsyncHandler.js";
-import House from "../house/house.module.js";
+import House from "../house/house.model.js";
 
 const listAHouse = catchAsync(async (req, res) => {
     const payload = req.body;

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import catchAsync from "../../errorHandler/catchAsyncHandler.js";
-import House from "../house/house.module.js";
+import House from "../house/house.model.js";
 import Booked from "./renter.model.js";
 import ApiError from "../../errorHandler/apiErrorHandler.js";
 
